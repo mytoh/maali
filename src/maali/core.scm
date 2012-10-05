@@ -187,28 +187,32 @@
          (b (x->number (caddr cols))))
     (colour-rgb r g b)))
 
+(define (colour-256-number number)
+  (string-append
+    "38;5;"
+    (number->string number)))
+
+(define (make-colour-string st)
+  (wrap-with-nothing
+    (wrap st)
+    s))
+
 (define (colour-dispatch s . rest)
   (if (null? rest)
     s
     (match (car rest)
       ((r g b)
-       (wrap-with-nothing
-         (wrap (colour-rgb r g b))
-         s))
+       (make-colour-string (colour-rgb r g b)))
       ((? string? st)
       (cond
         ((rxmatch->string #/^#?(?:[a-zA-Z0-9]{3}){1,2}$/ st)
-         (wrap-with-nothing
-           (wrap (colour-hex st))
-           s))
+         (make-colour-string (colour-hex st)))
         (else
-          (wrap-with-nothing
-            (wrap (colour-rgb-name st))
-            s))))
+            (make-colour-string (colour-rgb-name st)))))
+      ((? number? st)
+       (make-colour-string (colour-256-number st)))
       (colour
-        (wrap-with-nothing
-          (wrap (colour-symbol colour))
-          s))
+        (make-colour-string (colour-symbol colour)))
       ))
   )
 
