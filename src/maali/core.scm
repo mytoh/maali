@@ -192,27 +192,27 @@
     "38;5;"
     (number->string number)))
 
-(define (make-colour-string st)
+(define (make-colour-string st code)
   (wrap-with-nothing
-    (wrap st)
-    s))
+    (wrap code)
+    st))
 
 (define (colour-dispatch s . rest)
   (if (null? rest)
     s
     (match (car rest)
       ((r g b)
-       (make-colour-string (colour-rgb r g b)))
+       (make-colour-string s (colour-rgb r g b)))
       ((? string? st)
       (cond
         ((rxmatch->string #/^#?(?:[a-zA-Z0-9]{3}){1,2}$/ st)
-         (make-colour-string (colour-hex st)))
+         (make-colour-string s (colour-hex st)))
         (else
-            (make-colour-string (colour-rgb-name st)))))
+            (make-colour-string s (colour-rgb-name st)))))
       ((? number? st)
-       (make-colour-string (colour-256-number st)))
+       (make-colour-string s (colour-256-number st)))
       (colour
-        (make-colour-string (colour-symbol colour)))
+        (make-colour-string s (colour-symbol colour)))
       ))
   )
 
