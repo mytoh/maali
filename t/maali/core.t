@@ -4,7 +4,7 @@
 (use test.gasmine)
 (use maali.core)
 
-(describe "paint with one argcount"
+(describe "paint with one argument"
           (it "understands a simple symbol colour"
               (expect (paint "J-_-L" 'yellow) equal? "[33mJ-_-L[0m"))
 
@@ -40,7 +40,7 @@
 
 
 
-(run-suites)
+(run-suites '() 'tap-colour)
 
 
 ;; vim:filetype=scheme
