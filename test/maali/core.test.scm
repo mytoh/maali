@@ -1,5 +1,6 @@
 
 (use gauche.test)
+(use pieni.mini)
 (load "maali/core")
 (import maali.core)
 
