@@ -4,5 +4,5 @@
   (
    (make-directory* (build-path ( *lehti-dist-directory* ) "maali"))
    ;; library sources
-   (copy-directory* (build-path ( *lehti-cache-directory* ) "maali/src")
-                    (build-path ( *lehti-dist-directory* ) "maali/src"))))
+   (copy-directory* (build-path ( *lehti-cache-directory* ) "maali/lib")
+                    (build-path ( *lehti-dist-directory* ) "maali/lib"))))
