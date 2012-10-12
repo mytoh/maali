@@ -1,10 +1,8 @@
-
 maali
 =====
-
 lesser copy of paint_ gem
 
-.. _paint: http://github.com/janleli/paint
+.. _paint: http://github.com/janlelis/paint
 
 
 usage
