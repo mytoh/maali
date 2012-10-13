@@ -3,7 +3,9 @@
 
 (define-module maali.core
   (export
-    paint)
+    paint
+    pa
+    )
   (use maali.rgb-colours)
   (use util.match)
   (use util.list)
@@ -189,6 +191,11 @@
       ))
   )
 
-(define-macro (paint s . rest)
-  `(,colour-dispatch ,s ,@rest))
+(define (paint s . rest)
+  (apply colour-dispatch s rest))
+
+(define (pa x . rest)
+  "print colurd string and return argument"
+  (print (apply paint (x->string x) rest))
+  x)
 
