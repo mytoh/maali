@@ -82,14 +82,19 @@
     (default  49)
     ))
 
+(define (escape)
+  (string #\escape))
+
 (define (wrap code)
-  (string-append "[" code  "m"))
+  (string-append (escape) "[" code  "m"))
 
 (define (wrap-with-nothing code s)
   (string-append code s (nothing)))
 
 (define (nothing)
-  "[0m")
+  (string-append
+    (escape)
+  "[0m"))
 
 
 (define (symbol-colour-foreground lyst colour)
