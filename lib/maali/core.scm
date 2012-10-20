@@ -4,6 +4,7 @@
 (define-module maali.core
   (export
     paint
+    unpaint
     pa
     )
   (use maali.rgb-colours)
@@ -193,6 +194,10 @@
 
 (define (paint s . rest)
   (apply colour-dispatch s rest))
+
+(define (unpaint s)
+ (regexp-replace-all* s #/\[((\d)+;)*(\d)+m/ "" )
+  )
 
 (define (pa x . rest)
   "print colurd string and return argument"

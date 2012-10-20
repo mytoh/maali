@@ -22,5 +22,8 @@
              (is (== "[38;5;141mJ-_-L[0m" (paint "J-_-L" "MediumPurple")))
              )
 
+(define-test test-unpaint-one-argument
+             (is (== "test" (unpaint (paint "test" 33)))))
+
 
 (test-end)
