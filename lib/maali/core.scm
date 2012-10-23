@@ -27,8 +27,7 @@
     ))
 
 (define ansi-effects
-  '(
-    (reset 0) (nothing 0)
+  '( (reset 0) (nothing 0)
     (bright 1) (bold    1)
     (faint          2)
     (italic         3)
@@ -57,8 +56,7 @@
     ))
 
 (define ansi-colours-foreground
-  '(
-    (black    30)
+  '( (black    30)
     (red      31)
     (green    32)
     (yellow   33)
@@ -70,8 +68,7 @@
     ))
 
 (define ansi-colours-background
-  '(
-    (black    40)
+  '( (black    40)
     (red      41)
     (green    42)
     (yellow   43)
@@ -89,12 +86,12 @@
   (string-append (escape) "[" code  "m"))
 
 (define (wrap-with-nothing code s)
-  (string-append code s (nothing)))
+  (string-append code s (reset-colour)))
 
-(define (nothing)
+(define (reset-colour)
   (string-append
     (escape)
-  "[0m"))
+    "[0m"))
 
 
 (define (symbol-colour-foreground lyst colour)
@@ -102,6 +99,8 @@
 
 
 (define (rgb-value red green blue)
+  ;; receive three numbers and
+  ;; return string like ";5;120"
   (if (if-gray-possible red green blue)
     (string-append
       ";5;"
@@ -138,8 +137,9 @@
       ((< cnt 6)
        (loop sep (+ cnt 1)))
       ((< 6 cnt)
-        #t))))
+       #t))))
 
+;; make colour numbers functions
 (define (colour-rgb r g b)
   (string-append
     "38"
@@ -148,8 +148,7 @@
 (define (colour-symbol colour)
   (let ((c (symbol-colour-foreground ansi-colours-foreground colour)))
     (cond
-      (c c))
-    ))
+      (c c))))
 
 (define (colour-hex colour)
   (let ((s (string-trim colour #\#)))
@@ -172,6 +171,7 @@
   (string-append
     "38;5;"
     (number->string number)))
+;;
 
 (define (make-colour-string st code)
   (wrap-with-nothing
@@ -181,31 +181,30 @@
 (define (colour-dispatch s . rest)
   (if (null? rest)
     s
-    (match (car rest)
-      ((r g b)
-       (make-colour-string s (colour-rgb r g b)))
-      ((? string? st)
-      (cond
-        ((rxmatch->string #/^#?(?:[a-zA-Z0-9]{3}){1,2}$/ st)
-         (make-colour-string s (colour-hex st)))
-        (else
-            (make-colour-string s (colour-rgb-name st)))))
-      ((? number? st)
-       (make-colour-string s (colour-256-number st)))
-      (colour
-        (make-colour-string s (colour-symbol colour)))
-      ))
-  )
+    (make-colour-string s (match (car rest)
+                            ((r g b)
+                             (colour-rgb r g b)
+                             )
+                            ((? string? st)
+                             (cond
+                               ((rxmatch->string #/^#?(?:[a-zA-Z0-9]{3}){1,2}$/ st)
+                                (colour-hex st))
+                               (else
+                                 (colour-rgb-name st))))
+                            ((? number? st)
+                             (colour-256-number st))
+                            (colour
+                              (colour-symbol colour))))))
 
 (define (paint s . rest)
   (apply colour-dispatch s rest))
-
-(define (unpaint s)
- (regexp-replace-all* s #/\[((\d)+;)*(\d)+m/ "" )
-  )
 
 (define (pa x . rest)
   "print colurd string and return argument"
   (print (apply paint (x->string x) rest))
   x)
+
+(define (unpaint s)
+  (regexp-replace-all* s #/\[((\d)+;)*(\d)+m/ "" ))
+
 
