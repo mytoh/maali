@@ -1,6 +1,10 @@
 
 
-(files ("lib/**/*.scm"
-        "*.lehspec"
-        "readme*"
-        "test/**/*.scm"))
+(spec
+  '(files ("lib/**/*.scm"
+           "*.lehspec"
+           "readme*"
+           "test/**/*.scm"))
+  )
+
+
