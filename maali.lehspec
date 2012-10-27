@@ -2,6 +2,8 @@
 
 (spec
   '(name "maali")
+  '(description "colour your strings")
+  '(homepage "http://github.com/mytoh/maali")
   '(files ("lib/**/*.scm"
            "*.lehspec"
            "readme*"
