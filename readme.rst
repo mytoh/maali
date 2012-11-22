@@ -7,7 +7,8 @@ lesser copy of paint_ gem
 
 usage
 -----
-::
+
+.. code-block:: scheme
 
      (paint "test" 'red)          => "[38;5;120mtest[0m"
      (paint "test" 120)           => "[31mtest[0m"
