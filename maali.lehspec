@@ -1,13 +1,15 @@
 
 
 (spec
-  '(name "maali")
-  '(description "colour your strings")
-  '(homepage "http://github.com/mytoh/maali")
-  '(files ("lib/**/*.scm"
-           "*.lehspec"
-           "readme*"
-           "test/**/*.scm"))
-  )
-
-
+ (name "maali")
+ (description "colour your strings")
+ (homepage "http://github.com/mytoh/maali")
+ (files ("lib/maali.scm"
+         "lib/maali/core.scm"
+         "lib/maali/rgb-colours.scm"
+         "lib/maali/util.scm"
+         "maali.lehspec"
+         "readme.rst"
+         "t/maali/core.t"
+         "test/maali/core.test.scm"
+         )))
