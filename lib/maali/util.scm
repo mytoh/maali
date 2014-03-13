@@ -1,14 +1,16 @@
-;; -*- coding: utf-8 -*-
 
-(define-module maali.util
-  (export
-    rgb-txt->list)
-  (use util.match)
-  (use util.list)
-  (use file.util)
-  (use text.unicode)
-  (use srfi-1)
-  (use srfi-13)
+(define-library (maali util)
+    (export
+      rgb-txt->list)
+  (import
+    (scheme base)
+    (gauche base)
+    (util match)
+    (util list)
+    (file util)
+    (text unicode)
+    (srfi 1)
+    (srfi 13))
 
   (begin
 
