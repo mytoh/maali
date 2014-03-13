@@ -4,4 +4,6 @@
     paint
     unpaint
     pa)
-  (import (maali core)))
+  (import
+    (scheme base)
+    (maali core)))
