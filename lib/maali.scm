@@ -1,5 +1,5 @@
 
-(defne-library maali
+(defne-library (maali)
   (export
     paint
     unpaint
