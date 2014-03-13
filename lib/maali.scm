@@ -1,9 +1,9 @@
 
-(defne-library (maali)
-  (export
-    paint
-    unpaint
-    pa)
+(define-library (maali)
+    (export
+      paint
+      unpaint
+      pa)
   (import
     (scheme base)
     (maali core)))
