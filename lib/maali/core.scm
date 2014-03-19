@@ -138,7 +138,7 @@
              ((< cnt 6)
               (loop sep (+ cnt 1)))
              ((< 6 cnt)
-              #t))))
+              #true))))
 
     ;; make colour numbers functions
     (define (colour-rgb r g b)

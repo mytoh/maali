@@ -17,14 +17,14 @@
     (define (comment? string-line)
       (cond
         ((= (string-length string-line) 0)
-         #f)
+         #false)
         ((equal? #\# (~ (string-trim-both (string-trim-both string-line) #\t) 0))
-         #t)
-        (else #f)))
+         #true)
+        (else #false)))
 
     (define (empty-line? line)
       (if (string=? "" line)
-        #t #f))
+        #true #false))
 
     (define (colour-list lst)
       (map
