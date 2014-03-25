@@ -11,7 +11,7 @@ build_gauche_release() {
     (cd $SOURCE_DIR; ./configure; make; sudo make install)
 }
 
-build_gauche_release() {
+build_gauche_head() {
     SOURCE_DIR="gauche-head"
     git clone git://github.com/shirok/gauche ${SOURCE_DIR}
     (cd $SOURCE_DIR; ./DIST gen; ./configure --prefix=/home/travis/test ; make; sudo make install)
