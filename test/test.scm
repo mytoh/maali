@@ -8,7 +8,7 @@
 (define (main args)
   (display "maali loaded"))
 
-
+(main)
 
 ;; Local Variables:
 ;; coding: utf-8
