@@ -20,7 +20,7 @@ build_gauche_head() {
 }
 
 run_test() {
-    ${TEST_PREFIX}/bin/gosh -r7 -I. test.scm
+    ${TEST_PREFIX}/bin/gosh -r7 -I. ./test/test.scm
 }
 
 build_gauche_release
