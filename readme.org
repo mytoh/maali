@@ -1,5 +1,5 @@
 
-* maali [[https://travis-ci.org/mytoh/dotemacsd][https://travis-ci.org/mytoh/dotemacsd.svg]]
+* maali [[https://travis-ci.org/mytoh/dotemacsd][https://travis-ci.org/mytoh/maali.svg]]
 lesser copy of [[http://github.com/janlelis/paint][paint]] gem
 ** usage
 #+begin_src scheme
