@@ -3,6 +3,7 @@
 set -e
 
 TEST_PREFIX=/home/travis/build/test
+BUILD_DIR=
 
 build_gauche_release() {
     SOURCE=Gauche.tgz
@@ -20,7 +21,7 @@ build_gauche_head() {
 }
 
 run_test() {
-    ${TEST_PREFIX}/bin/gosh -r7 -I. ./test/test.scm
+    ${TEST_PREFIX}/bin/gosh -r7 -I${TRAVIS_BUILD_DIR} ${TRAVIS_BUILD_DIR}/test/test.scm
 }
 
 build_gauche_release
