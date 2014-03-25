@@ -5,7 +5,7 @@
         (gauche base)
         (maali))
 
-(define (main args)
+(define (main)
   (display "maali loaded"))
 
 (main)
