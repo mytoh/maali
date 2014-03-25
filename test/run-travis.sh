@@ -2,6 +2,8 @@
 
 set -e
 
+TEST_PREFIX=/home/travis/build/test
+
 build_gauche_release() {
     SOURCE=Gauche.tgz
     wget -O $SOURCE http://practical-scheme.net/gauche/latest
@@ -14,11 +16,11 @@ build_gauche_release() {
 build_gauche_head() {
     SOURCE_DIR="gauche-head"
     git clone git://github.com/shirok/gauche ${SOURCE_DIR}
-    (cd $SOURCE_DIR; ./DIST gen; ./configure --prefix=/home/travis/test ; make; sudo make install)
+    (cd $SOURCE_DIR; ./DIST gen; ./configure --prefix=${TEST_PREFIX} ; make; sudo make install)
 }
 
 run_test() {
-    ./test/bin/gosh -r7 -I. test.scm
+    ${TEST_PREFIX}/bin/gosh -r7 -I. test.scm
 }
 
 build_gauche_release
