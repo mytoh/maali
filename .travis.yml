@@ -1,0 +1,8 @@
+language: scheme
+branches:
+  only:
+    - master
+install:
+  - sudo apt-get install -qq -y zlib1g-dev libgdbm-dev slib
+script:
+  sh ./test/run-travis.sh
