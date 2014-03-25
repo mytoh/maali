@@ -14,11 +14,11 @@ build_gauche_release() {
 build_gauche_release() {
     SOURCE_DIR="gauche-head"
     git clone git://github.com/shirok/gauche ${SOURCE_DIR}
-    (cd $SOURCE_DIR; ./DIST gen; ./configure --prefix=test ; make; sudo make install)
+    (cd $SOURCE_DIR; ./DIST gen; ./configure --prefix=/home/travis/test ; make; sudo make install)
 }
 
 run_test() {
-    test/bin/gosh -r7 -I. test.scm
+    ./test/bin/gosh -r7 -I. test.scm
 }
 
 build_gauche_release
