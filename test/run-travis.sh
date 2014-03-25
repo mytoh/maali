@@ -10,13 +10,13 @@ build_gauche_release() {
     tar xzf $SOURCE
     VERSION=`curl -s http://practical-scheme.net/gauche/latest/version`
     SOURCE_DIR="Gauche-${VERSION}"
-    (cd $SOURCE_DIR; ./configure; make; sudo make install)
+    (cd $SOURCE_DIR; ./configure; make --quiet ; sudo make --quiet install)
 }
 
 build_gauche_head() {
     SOURCE_DIR="gauche-head"
     git clone git://github.com/shirok/gauche ${SOURCE_DIR}
-    (cd $SOURCE_DIR; ./DIST gen; ./configure --prefix=${TEST_PREFIX} ; make; sudo make install)
+    (cd $SOURCE_DIR; ./DIST gen; ./configure --prefix=${TEST_PREFIX} ; make --quiet ; sudo make --quiet install)
 }
 
 run_test() {
