@@ -4,7 +4,7 @@
       rgb-txt->list)
   (import
     (scheme base)
-    (gauche base)
+    (gauche)
     (util match)
     (util list)
     (file util)

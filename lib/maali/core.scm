@@ -6,7 +6,7 @@
       pa)
   (import
     (scheme base)
-    (gauche base)
+    (gauche)
     (maali rgb-colours)
     (util match)
     (util list)
