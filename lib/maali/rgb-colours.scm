@@ -4,7 +4,7 @@
       rgb-colours)
   (import
     (scheme base)
-    (gauche)
+    (gauche base)
     (util match)
     (util list)
     (srfi 1)
